@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Data
+data = {'Name': ['Helena', 'Hugh', 'Ladislav', 'Luis', 'Richard'],
+        'Last Name': ["Holý", "O'Reilly", "Kovács", "Rojas", "Cunningham"],
+        'Value 1': [7, 7, 7, 7, 7],
+        'Value 2': [49.62, 45.62, 45.62, 46.62, 47.62]}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Visualization
+plt.bar(df['Name'], df['Value 2'])
+plt.xlabel('Name')
+plt.ylabel('Value 2')
+plt.title('Data Visualization')
+plt.show()
