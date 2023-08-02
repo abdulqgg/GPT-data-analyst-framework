@@ -1,18 +1,13 @@
-import matplotlib.pyplot as plt
-import pandas as pd
+import plotly.graph_objects as go
 
-# Data
-data = {'Name': ['Helena', 'Hugh', 'Ladislav', 'Luis', 'Richard'],
-        'Last Name': ["Holý", "O'Reilly", "Kovács", "Rojas", "Cunningham"],
-        'Value 1': [7, 7, 7, 7, 7],
-        'Value 2': [49.62, 45.62, 45.62, 46.62, 47.62]}
+names = ['Helena', 'Holý', 'Hugh', "O'Reilly", 'Ladislav', 'Kovács', 'Luis', 'Rojas', 'Richard', 'Cunningham']
+ages = [7, 7, 7, 7, 7, 7, 7, 7]
+gpa = [49.62, 45.62, 45.62, 46.62, 47.62]
 
-# Create DataFrame
-df = pd.DataFrame(data)
+fig = go.Figure(data=[
+    go.Bar(name='Age', x=names, y=ages),
+    go.Bar(name='GPA', x=names, y=gpa)
+])
 
-# Visualization
-plt.bar(df['Name'], df['Value 2'])
-plt.xlabel('Name')
-plt.ylabel('Value 2')
-plt.title('Data Visualization')
-plt.show()
+fig.update_layout(title_text='Student Data', xaxis_title='Names', yaxis_title='Values')
+fig.show()

@@ -46,10 +46,21 @@ chat_completion = openai.ChatCompletion.create(
             plt.title('Scatter Plot')
             plt.show()
 
+            Example 4:
+            Input: Create me a bar chart example using plotpy
+            Output:
+            import plotly.graph_objects as go
+            fruits = ['Apples', 'Oranges', 'Bananas', 'Grapes', 'Berries']
+            quantities = [10, 15, 7, 10, 5]
+            fig = go.Figure([go.Bar(x=fruits, y=quantities)])
+            fig.update_layout(title_text='Fruit Quantities', xaxis_title='Fruit', yaxis_title='Quantity')
+            fig.show()
+
+
 
             -----
 
-            Visualise this data: {data_string}
+            Visualise this data using plotly: {data_string}
 
 '''}
         ]
