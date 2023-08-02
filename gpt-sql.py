@@ -7,6 +7,9 @@ import csv
 
 load_dotenv()
 
+with open('database-info.txt', 'r') as file:
+    database_info = file.read()
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 chat_completion = openai.ChatCompletion.create(
@@ -14,86 +17,11 @@ chat_completion = openai.ChatCompletion.create(
     messages=[
         {"role": "system", "content": "You are a sql expert in data analysis"},
         {"role": "user", "content": 
-        '''Pretend you are a sql data analsyis,
+        f'''Pretend you are a sql data analsyis,
 
             My database break down is as follows:
 
-            customers:
-            - Customerid
-            - FirstName
-            - LastName
-            - Company
-            - Address
-            - City
-            - State
-            - Country
-            - PostalCode
-            - Phone
-            - Fax
-            - Email
-            - SupportRepid
-
-            employees:
-            - Employeeid
-            - LastName
-            - FirstName
-            - Title
-            - ReportsTo
-            - BirthDate
-            - HireDate
-            - Address
-
-            invoices:
-            - invoiceid
-            - Customerid
-            - InvoiceDate
-            - BillingAddress
-            - BillingCity
-
-            invoice_items:
-            - invoicelitemid
-            - Invoiceid
-            - Trackid
-            - UnitPrice
-            - Quantity
-
-            albums:
-            - Albumid
-            - Title
-            - Artistid
-
-            tracks:
-            - Trackid
-            - Name
-            - Albumid
-            - MediaTypeid
-            - Genreid
-            - Composer
-            - Milliseconds
-            - Bytes
-            - UnitPrice
-
-            artists:
-            - Artistid
-            - Name
-
-            playlist_track:
-            - Playlistid
-            - Trackid
-
-            playlists:
-            - Playlistid
-            - Name
-
-            media_types:
-            - MediaTypeid
-            - Name
-
-            genres:
-            - Genreid
-            - Name
-
-
+            {database_info}
             I want you to give only the sql code as a output so for example:
 
             Input: How do i select all the customers first names
