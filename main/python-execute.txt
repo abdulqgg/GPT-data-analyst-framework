@@ -1,0 +1,17 @@
+import plotly.graph_objects as go
+import pandas as pd
+
+data = {'Name': ['Helena', 'Hugh', 'Ladislav', 'Luis', 'Richard', 'Richard', 'Helena', 'Ladislav', 'Hugh', 'Luis'],
+        'Last Name': ["Holý", "O'Reilly", "Kovács", "Rojas", "Cunningham", "Cunningham", "Holý", "Kovács", "O'Reilly", "Rojas"],
+        'Number of Classes': [7, 7, 7, 7, 7, 7, 7, 7, 7, 7],
+        'Value': [49.62, 45.62, 45.62, 46.62, 47.62, 47.62, 49.62, 45.62, 45.62, 46.62]}
+
+df = pd.DataFrame(data)
+
+fig = go.Figure(data=go.Scatter(x=df['Name'], y=df['Value'], mode='markers'))
+
+fig.update_layout(title='Data Visualization',
+                  xaxis_title='Name',
+                  yaxis_title='Value')
+
+fig.show()
