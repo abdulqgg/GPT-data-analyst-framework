@@ -28,12 +28,30 @@ The main deliverable of this project is the `extracted-data.csv` file, containin
 
 To use this project, kindly follow these steps:
 
-1. Set up your environment variables, particularly the OpenAI API key.
+1. Set up your environment variables. Save your `OPENAI_API_KEY` in .env 
 2. Connect to your SQL database. I've used `chinook.db`, a sample database, in this project.
-3. Run `gpt-sql.py` to initiate the data extraction process. This script will convert your natural language input into SQL queries, execute them on the connected database, and save the results in a CSV file.
+3. Run `gpt-sql.py` to initiate the data extraction process. This script will convert your natural language input into SQL queries, execute them on the connected database, and save the results as a CSV called `extracted-data.csv`.
 4. If you wish to visualize the data, run `gpt-python.py`. This script will create visualizations using the data extracted in the previous step.
 
 Please note that you may need to install specific Python libraries if they aren't already present in your environment.
+
+### Libraries and Installation
+
+**Standard Libraries**:
+- `os`, `subprocess`, `sqlite3`, `csv`: Included with Python.
+
+**Third-Party Libraries**:
+- `dotenv`: Environment variables management.
+- `openai`: OpenAI API access.
+- `pandas`: Data analysis.
+
+Install the third-party libraries using:
+
+`
+pip install python-dotenv openai pandas
+`
+
+Ensure you have the required libraries before running the project.
 
 ## Credits
 
