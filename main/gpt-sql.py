@@ -12,6 +12,9 @@ with open('database-info.txt', 'r') as file:
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+# e.g Give me a list of all customer names with the count of unique invoices and the sum of unit price where the sum of unit price is greater than 45. Order by customer name
+user_query = input("Please enter your query: ")
+
 chat_completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo", 
     messages=[
@@ -36,14 +39,16 @@ chat_completion = openai.ChatCompletion.create(
 
             -----
 
-            Give me a list of all customer names with the count of unique invoices and the sum of unit price where the sum of unit price is greater than 45. Order by customer name
+
+            {user_query}
+            
 '''}
         ]
     )
 
 query = chat_completion['choices'][0]['message']['content']
 
-print(query)
+#print(query)
 
 conn = sqlite3.connect('chinook.db')
 cursor = conn.cursor()
@@ -52,8 +57,8 @@ cursor.execute(query)
 
 rows = cursor.fetchall()
 
-with open('extracted-data.csv', 'a', newline='') as f:
-    f.write("\n")
+with open('extracted-data.csv', 'w', newline='') as f:
+    #f.write("\n")
     writer = csv.writer(f)
     writer.writerows(rows)
 
