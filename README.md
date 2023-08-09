@@ -26,6 +26,8 @@ The main deliverable of this project is the `extracted-data.csv` file, containin
 
 ## How to Use
 
+Youtube tutorial https://youtu.be/12gOkmMs8qg
+
 To use this project, kindly follow these steps:
 
 1. Set up your environment variables. Save your `OPENAI_API_KEY` in .env 
