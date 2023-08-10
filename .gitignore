@@ -1,2 +1,33 @@
+# Ignore Python compiled files
+*.pyc
+__pycache__
+
+# Ignore all log files
+*.log
+
+# Ignore SQLite database files (if you're using SQLite)
+*.sqlite3
+
+# Ignore user-uploaded media files
+media/
+
+# Ignore the virtual environment
+venv/
+env/
+
+# Ignore cache files and other temporary files
+*.cache
+*.egg-info
+db.sqlite3-journal
+
+# Ignore local environment variable configurations
 .env
-/django
+
+# Ignore the configuration files of various tools
+.vscode/
+.idea/
+
+# Ignore all `.DS_Store` files (Mac OS)
+.DS_Store
+
+
