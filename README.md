@@ -59,3 +59,9 @@ Ensure you have the required libraries before running the project.
 ## Credits
 
 This project draws inspiration from a research paper I read. I have carried out the implementation and development of this idea into a functioning project. https://arxiv.org/abs/2305.15038
+
+## Screenshots
+
+![Screenshot 2023-08-10 at 21 59 48](https://github.com/abdulqgg/GPT-data-analyst-framework/assets/43912641/4e86f903-b4fa-4857-9090-5df0e1fa381b)
+
+
