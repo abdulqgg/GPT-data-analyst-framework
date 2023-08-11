@@ -67,28 +67,3 @@ def your_function(txt_file_path, db_file_path, api_key, user_query):
 
     return response
 
-
-
-
-
-
-
-
-
-
-
-'''
-conn = sqlite3.connect('chinook.db')
-cursor = conn.cursor()
-
-cursor.execute(query)
-
-rows = cursor.fetchall()
-
-with open('extracted-data.csv', 'w', newline='') as f:
-    #f.write("\n")
-    writer = csv.writer(f)
-    writer.writerows(rows)
-
-conn.close()
-'''

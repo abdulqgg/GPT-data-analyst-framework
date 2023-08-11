@@ -15,11 +15,14 @@ def index(request):
             your_function(document.txt_file.path, document.db_file.path, api_key, user_query)
             
             # Redirect to the download view to initiate the file download
+            request.session['form_submitted'] = True
             return redirect('download_view')
     else:
         form = DocumentForm()
+
+    form_submitted = request.session.get('form_submitted', False)
     
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'index.html', {'form': form, 'form_submitted': form_submitted})
 
 def download_view(request):
     response = FileResponse(open('extracted-data.csv', 'rb'))
