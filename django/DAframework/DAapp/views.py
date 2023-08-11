@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import FileResponse
 from .forms import DocumentForm
-from .your_script import your_function
+from .your_script import your_function, python_visualise
 
 def index(request):
     if request.method == 'POST':
@@ -32,4 +32,4 @@ def download_view(request):
 
 def python(request):
     if request.method== 'POST':
-        return None
+        return python_visualise()
