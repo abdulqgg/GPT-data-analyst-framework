@@ -30,4 +30,6 @@ def download_view(request):
     response['Content-Type'] = 'text/csv'
     return response
 
-
+def python(request):
+    if request.method== 'POST':
+        return None

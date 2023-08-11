@@ -280,7 +280,12 @@
             <br>
             <input type="submit" value="Submit">
         </form>
-        <button id="python" {% if not form_submitted %}disabled{% endif %}>Visualise Data</button>
+
+        <form action="{% url 'python' %}" method="post">
+            {% csrf_token %}
+            <button id="pythonButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Visualise Data</button>
+        </form>
+
     </div>
 </body>
 </html>
