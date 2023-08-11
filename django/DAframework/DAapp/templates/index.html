@@ -250,6 +250,30 @@
             animation: none;
         }
         }
+
+        /* Python button */
+        .pythonButton {
+            display: block; 
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            background-color: var(--primary-color); /* Default to green */
+            color: #fff;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            box-shadow: var(--box-shadow);
+        }
+
+        .pythonButton:hover {
+            background-color: #3e8e41; /* Darker green on hover */
+        }
+
+        .pythonButton:disabled {
+            background-color: #f44336; /* Red when disabled */
+            cursor: not-allowed;
+        }
+
     </style>
     
         
@@ -283,7 +307,7 @@
 
         <form action="{% url 'python' %}" method="post">
             {% csrf_token %}
-            <button id="pythonButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Visualise Data</button>
+            <button id="pythonButton" class="pythonButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Visualise Data</button>
         </form>
 
     </div>
