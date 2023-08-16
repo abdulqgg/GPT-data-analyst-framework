@@ -131,6 +131,4 @@ def python_visualise():
     with open('python-execute.txt', 'w') as f:
         f.write(execute)
 
-    subprocess.run(["python", 'python-execute.txt'])
-
-    pass
+    return subprocess.run(["python", 'python-execute.txt'])
