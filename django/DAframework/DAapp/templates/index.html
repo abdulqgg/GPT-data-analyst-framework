@@ -112,7 +112,7 @@
         max-width: 700px;
         margin: 30px auto;
         padding: var(--container-pad);
-        background-color: var(--main-content-bg); 
+        background-color: var(--main-content-bg);
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow);
         }
@@ -125,7 +125,7 @@
         h1 {
         font-size: 2rem;
         text-align: center;
-        } 
+        }
 
         /* Text styles */
         .text-muted {
@@ -139,7 +139,7 @@
         margin-bottom: 4px;
         }
 
-        input, 
+        input,
         textarea,
         select {
         width: 100%;
@@ -149,7 +149,7 @@
         outline: none;
         }
 
-        input:focus, 
+        input:focus,
         textarea:focus {
         border-color: var(--primary-color);
         box-shadow: 0 0 0 2px var(--primary-color) / 20%;
@@ -162,7 +162,7 @@
 
         /* Submit button */
         .btn {
-        display: block; 
+        display: block;
         width: 100%;
         padding: 12px 16px;
         border: none;
@@ -198,7 +198,7 @@
 
         100% {
             transform: translateX(0);
-        } 
+        }
         }
 
         /* Mobile friendly responsive styles */
@@ -245,7 +245,7 @@
         .slideUp {
             animation: none;
         }
-        
+
         .slideLeft {
             animation: none;
         }
@@ -253,7 +253,8 @@
 
         /* Python button */
         .pythonButton {
-            display: block; 
+            margin-top: 10px;
+            display: block;
             width: 100%;
             padding: 12px 16px;
             border: none;
@@ -275,8 +276,8 @@
         }
 
     </style>
-    
-        
+
+
 </head>
 <body>
     <div class="container">
@@ -286,19 +287,19 @@
             <label for="OPENAI_API_KEY">OpenAi API Key:</label>
             <input type="password" name="OPENAI_API_KEY" required>
             <br>
-            
+
             <!-- Description and Field for txt_file -->
             <label for="{{ form.txt_file.id_for_label }}">Text File:</label>
             <p>This is your database breakdown as a .txt</p>
             {{ form.txt_file }}
             <br>
-            
+
             <!-- Description and Field for db_file -->
             <label for="{{ form.db_file.id_for_label }}">Database File:</label>
             <p>This is your database as .db</p>
             {{ form.db_file }}
             <br>
-            
+
             <label for="user_query">Enter a query for your data:</label>
             <textarea name="user_query" id="user_query" rows="2" required></textarea>
             <br>
