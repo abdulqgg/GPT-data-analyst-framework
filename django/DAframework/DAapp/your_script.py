@@ -5,6 +5,9 @@ import sqlite3
 import csv
 from django.http import FileResponse
 import pandas as pd
+import json
+import plotly.graph_objects as go
+from django.http import HttpResponse
 
 def your_function(txt_file_path, db_file_path, api_key, user_query):
     with open(txt_file_path, 'r') as file:
@@ -129,6 +132,13 @@ def python_visualise():
     execute = chat_completion['choices'][0]['message']['content']
 
     with open('python-execute.txt', 'w') as f:
+        f.write('import json\n')
         f.write(execute)
+        f.write('\nprint(fig.to_json())')
 
-    return subprocess.run(["python", 'python-execute.txt'])
+    result = subprocess.run(["python", 'python-execute.txt'])
+    fig_json = result.stdout
+    fig = go.Figure(json.loads(fig_json))
+    plot_html = go.offline.plot(fig, output_type='div')
+    return HttpResponse(plot_html)
+
