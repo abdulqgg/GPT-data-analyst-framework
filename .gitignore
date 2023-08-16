@@ -30,4 +30,5 @@ db.sqlite3-journal
 # Ignore all `.DS_Store` files (Mac OS)
 .DS_Store
 
-
+django/DAframework/extracted-data.csv
+django/DAframework/python-execute.txt
