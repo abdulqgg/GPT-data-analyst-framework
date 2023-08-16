@@ -62,6 +62,7 @@ This project draws inspiration from a research paper I read. I have carried out 
 
 ## Screenshots
 
-![Screenshot 2023-08-10 at 21 59 48](https://github.com/abdulqgg/GPT-data-analyst-framework/assets/43912641/4e86f903-b4fa-4857-9090-5df0e1fa381b)
+![Screenshot 2023-08-11 at 23 20 00](https://github.com/abdulqgg/GPT-data-analyst-framework/assets/43912641/b5fc0985-856e-422c-833f-95af90804eea)
+
 
 
