@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 import os
 import openai
 import subprocess
@@ -16,10 +15,10 @@ def your_function(txt_file_path, db_file_path, api_key, user_query):
     user_query = user_query
 
     chat_completion = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo", 
+    model="gpt-3.5-turbo",
     messages=[
         {"role": "system", "content": "You are a sql expert in data analysis"},
-        {"role": "user", "content": 
+        {"role": "user", "content":
         f'''Pretend you are a sql data analsyis,
 
             My database break down is as follows:
@@ -28,7 +27,7 @@ def your_function(txt_file_path, db_file_path, api_key, user_query):
             I want you to give only the sql code as a output so for example:
 
             Input: How do i select all the customers first names
-            Output: 
+            Output:
             SELECT FirstName FROM customers;
 
             input: Update a albums name to "new name" where its id is 101
@@ -41,7 +40,7 @@ def your_function(txt_file_path, db_file_path, api_key, user_query):
 
 
             {user_query}
-            
+
         '''}
         ])
 
@@ -74,10 +73,10 @@ def python_visualise():
     data_string = df.to_string()
 
     chat_completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", 
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a python expert in data analysis"},
-            {"role": "user", "content": 
+            {"role": "user", "content":
             f'''Pretend you are a python data analsyis,
 
                 I want you ot give only the python code as a output so for example:
@@ -133,3 +132,5 @@ def python_visualise():
         f.write(execute)
 
     subprocess.run(["python", 'python-execute.txt'])
+
+    pass
