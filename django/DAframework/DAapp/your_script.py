@@ -7,6 +7,7 @@ from django.http import FileResponse
 import pandas as pd
 import json
 import plotly.graph_objects as go
+import plotly.offline as pyo
 from django.http import HttpResponse
 
 def your_function(txt_file_path, db_file_path, api_key, user_query):
@@ -131,14 +132,23 @@ def python_visualise():
 
     execute = chat_completion['choices'][0]['message']['content']
 
-    with open('python-execute.txt', 'w') as f:
+    execute_temp = execute.split('\n')
+    execute =  '\n'.join(execute_temp[:-1])
+
+    with open('python-execute.py', 'w') as f:
         f.write('import json\n')
         f.write(execute)
         f.write('\nprint(fig.to_json())')
 
-    result = subprocess.run(["python", 'python-execute.txt'])
-    fig_json = result.stdout
-    fig = go.Figure(json.loads(fig_json))
-    plot_html = go.offline.plot(fig, output_type='div')
-    return HttpResponse(plot_html)
+    result = subprocess.run(["python", 'python-execute.py'], stdout=subprocess.PIPE)
+    stdout = result.stdout.decode()
+    fig_json = json.loads(stdout)
+
+    if fig_json:
+        fig = go.Figure(fig_json)
+        plot_html = pyo.plot(fig, output_type='div')
+        return HttpResponse(plot_html)
+    else:
+        # If there was no stdout, return the stderr to help diagnose the issue.
+        return HttpResponse(f"Error executing script: {result.stderr}")
 
