@@ -68,9 +68,6 @@ chat_completion = openai.ChatCompletion.create(
 
 execute = chat_completion['choices'][0]['message']['content']
 
-execute_temp = execute.split('\n')
-execute =  '\n'.join(execute_temp[:-1])
-
 with open('python-execute.txt', 'w') as f:
     f.write(execute)
 
