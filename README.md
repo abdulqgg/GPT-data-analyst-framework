@@ -2,6 +2,12 @@
 
 Welcome to my data analysis project! Inspired by a research paper I read, I've developed a framework that leverages the power of natural language processing (NLP) for data analysis. The core feature of this project is its ability to convert natural language queries into SQL statements, execute these statements to extract relevant data, and create visualizations for a more intuitive understanding of the results.
 
+## Website
+
+https://abdulqg.pythonanywhere.com/index/
+
+I developed a web solution using django and hosted it with pythonanywhere
+
 ## Main Features
 
 1. **Natural Language Data Analysis**: This project is designed to accept natural language queries. With the help of the GPT-3.5-Turbo API, these queries are transformed into executable SQL statements.
