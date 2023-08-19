@@ -1,0 +1,113 @@
+Categories:
+- CategoryID
+- CategoryName
+- Description
+- Picture
+
+sqlite_sequence:
+- name
+- seq
+
+CustomerCustomerDemo:
+- CustomerID
+- CustomerTypeID
+
+CustomerDemographics:
+- CustomerTypeID
+- CustomerDesc
+
+Customers:
+- CustomerID
+- CompanyName
+- ContactName
+- ContactTitle
+- Address
+- City
+- Region
+- PostalCode
+- Country
+- Phone
+- Fax
+
+Employees:
+- EmployeeID
+- LastName
+- FirstName
+- Title
+- TitleOfCourtesy
+- BirthDate
+- HireDate
+- Address
+- City
+- Region
+- PostalCode
+- Country
+- HomePhone
+- Extension
+- Photo
+- Notes
+- ReportsTo
+- PhotoPath
+
+EmployeeTerritories:
+- EmployeeID
+- TerritoryID
+
+Order Details:
+- OrderID
+- ProductID
+- UnitPrice
+- Quantity
+- Discount
+
+Orders:
+- OrderID
+- CustomerID
+- EmployeeID
+- OrderDate
+- RequiredDate
+- ShippedDate
+- ShipVia
+- Freight
+- ShipName
+- ShipAddress
+- ShipCity
+- ShipRegion
+- ShipPostalCode
+- ShipCountry
+
+Products:
+- ProductID
+- ProductName
+- SupplierID
+- CategoryID
+- QuantityPerUnit
+- UnitPrice
+- UnitsInStock
+- UnitsOnOrder
+- ReorderLevel
+- Discontinued
+
+Regions:
+- RegionID
+- RegionDescription
+
+Shippers:
+- ShipperID
+- CompanyName
+- Phone
+
+Suppliers:
+- SupplierID
+- CompanyName
+- ContactName
+- ContactTitle
+- Address
+- City
+- Region
+- PostalCode
+- Country
+- Phone
+- Fax
+- HomePage
+

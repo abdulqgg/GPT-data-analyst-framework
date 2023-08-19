@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to the SQLite database
-con = sqlite3.connect('chinook.db')
+con = sqlite3.connect('northwind.db')
 
 # Create a cursor object
 cur = con.cursor()
@@ -12,13 +12,13 @@ tables = cur.fetchall()
 
 # Loop through all tables and print their names and headers
 for table in tables[:-1]:
-    with open('database-info.txt', 'a') as f:
+    with open('northwind-info.txt', 'a') as f:
         f.write(f"{table[0]}:")
-        cur.execute('PRAGMA table_info({})'.format(table[0]))
+        cur.execute(f'PRAGMA table_info("{table[0]}")')  # Quote the table name
 
         # Fetch all column details
         columns = cur.fetchall()
-        
+
         # Print column names
         for column in columns:
             f.write(f"\n- {column[1]}")
