@@ -24,7 +24,7 @@ The following technologies and languages have been used in this project:
 
 3. **GPT API**: Used for the conversion of natural language queries into SQL statements.
 
-4. **Django**:Web framework for Python.
+4. **Django**: Web framework for Python.
 
 5. **PythonAnywhere**: Hosting service.
 
