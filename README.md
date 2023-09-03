@@ -6,15 +6,13 @@ Welcome to my data analysis project! Inspired by a research paper I read, I've d
 
 https://abdulqg.pythonanywhere.com/index/
 
-I developed a web solution using django and hosted it with pythonanywhere
-
 ## Main Features
 
 1. **Natural Language Data Analysis**: This project is designed to accept natural language queries. With the help of the GPT-3.5-Turbo API, these queries are transformed into executable SQL statements.
 
 2. **Data Extraction**: The SQL queries are executed on a connected database, with results extracted and stored in a CSV file (`extracted-data.csv`).
 
-3. **Data Visualization**: The framework also offers the capability to visualize the extracted data using Python, providing a clear, comprehensible depiction of the results.
+3. **Data Visualization**: The framework also offers the capability to visualize the extracted data using Python (plotly), providing a clear, comprehensible depiction of the results.
 
 ## Technologies
 
@@ -22,9 +20,13 @@ The following technologies and languages have been used in this project:
 
 1. **Python**: The primary language for scripting and development.
 
-2. **SQL**: Essential for data extraction and manipulation.
+2. **SQLite**: Essential for data extraction and manipulation.
 
 3. **GPT API**: Used for the conversion of natural language queries into SQL statements.
+
+4. **Django**:Web framework for Python.
+
+5. **PythonAnywhere**: Hosting service.
 
 ## Results
 
