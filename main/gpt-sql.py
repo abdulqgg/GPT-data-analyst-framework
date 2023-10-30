@@ -48,7 +48,7 @@ chat_completion = openai.ChatCompletion.create(
 
 query = chat_completion['choices'][0]['message']['content']
 
-#print(query)
+print(query)
 
 conn = sqlite3.connect('chinook.db')
 cursor = conn.cursor()
@@ -56,6 +56,7 @@ cursor = conn.cursor()
 cursor.execute(query)
 
 rows = cursor.fetchall()
+print(rows)
 
 with open('extracted-data.csv', 'w', newline='') as f:
     #f.write("\n")
@@ -63,3 +64,19 @@ with open('extracted-data.csv', 'w', newline='') as f:
     writer.writerows(rows)
 
 conn.close()
+
+
+chat_completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": "You are a sql expert in data analysis"},
+        {"role": "user", "content": 
+        f'''This 
+            
+'''}
+        ]
+    )
+
+query = chat_completion['choices'][0]['message']['content']
+
+print(query)
