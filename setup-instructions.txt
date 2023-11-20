@@ -1,0 +1,16 @@
+Set up env:
+python -m venv myenv
+
+Activate myenv:
+source myenv/bin/activate
+
+Install required packages:
+pip install 
+django
+python-dotenv
+openai
+pandas
+plotly
+
+Locally run django:
+python manage.py runserver

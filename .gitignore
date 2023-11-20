@@ -32,3 +32,5 @@ db.sqlite3-journal
 
 django/DAframework/extracted-data.csv
 django/DAframework/python-execute.txt
+
+django/DAframework/myenv
