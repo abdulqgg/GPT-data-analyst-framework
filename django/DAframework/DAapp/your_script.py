@@ -13,17 +13,14 @@ from django.http import HttpResponse
 def your_function(txt_file_path, db_file_path, api_key, user_query):
     with open(txt_file_path, 'r') as file:
         database_info = file.read()
-
     openai.api_key = api_key
-
     user_query = user_query
-
     chat_completion = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are a sql expert in data analysis"},
-        {"role": "user", "content":
-        f'''Pretend you are a sql data analsyis,
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a sql expert in data analysis"},
+            {"role": "user", "content":
+             f'''Pretend you are a sql data analsyis,
 
             My database break down is as follows:
 
@@ -47,41 +44,32 @@ def your_function(txt_file_path, db_file_path, api_key, user_query):
 
         '''}
         ])
-
     query = chat_completion['choices'][0]['message']['content']
-
     # Connect to the SQLite database and execute the query
     conn = sqlite3.connect(db_file_path)
     cursor = conn.cursor()
-
     cursor.execute(query)
-
     rows = cursor.fetchall()
-
     conn.close()
-
     # Write the results to a CSV file
     with open('extracted-data.csv', 'w', newline='') as f:
         writer = csv.writer(f)
         writer.writerows(rows)
-
     # Create a FileResponse to send the CSV file to the client
     response = FileResponse(open('extracted-data.csv', 'rb'))
     response['Content-Disposition'] = 'attachment; filename="extracted-data.csv"'
-
     return response
+
 
 def python_visualise():
     df = pd.read_csv('extracted-data.csv')
-
     data_string = df.to_string()
-
     chat_completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a python expert in data analysis"},
             {"role": "user", "content":
-            f'''Pretend you are a python data analsyis,
+             f'''Pretend you are a python data analsyis,
 
                 I want you ot give only the python code as a output so for example:
 
@@ -127,23 +115,19 @@ def python_visualise():
                 Visualise this data using plotly: {data_string}
 
     '''}
-            ]
-        )
-
+        ]
+    )
     execute = chat_completion['choices'][0]['message']['content']
-
     execute_temp = execute.split('\n')
-    execute =  '\n'.join(execute_temp[:-1])
-
+    execute = '\n'.join(execute_temp[:-1])
     with open('python-execute.py', 'w') as f:
         f.write('import json\n')
         f.write(execute)
         f.write('\nprint(fig.to_json())')
-
-    result = subprocess.run(["python", 'python-execute.py'], stdout=subprocess.PIPE)
+    result = subprocess.run(
+        ["python", 'python-execute.py'], stdout=subprocess.PIPE)
     stdout = result.stdout.decode()
     fig_json = json.loads(stdout)
-
     if fig_json:
         fig = go.Figure(fig_json)
         plot_html = pyo.plot(fig, output_type='div')
@@ -151,4 +135,3 @@ def python_visualise():
     else:
         # If there was no stdout, return the stderr to help diagnose the issue.
         return HttpResponse(f"Error executing script: {result.stderr}")
-
