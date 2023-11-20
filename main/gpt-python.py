@@ -60,7 +60,7 @@ chat_completion = openai.ChatCompletion.create(
 
             -----
 
-            Visualise this data using plotly: {data_string}
+            Visualise this data using plotly as a most appropriate visualization: {data_string}
 
 '''}
         ]

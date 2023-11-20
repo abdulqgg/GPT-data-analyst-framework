@@ -1,9 +1,14 @@
 import json
-import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
 
-songs = ['Balls to the Wall', 'Inject The Venom', 'Snowballed', 'Overdose', 'Deuces Are Wild', 'Not The Doctor', 'Por Causa De Você', 'Welcome Home (Sanitarium)', 'Snowblind', 'Cornucopia']
-counts = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+data = {
+    'Song': ['The Trooper', 'Untitled', 'The Number Of The Beast', 'Sure Know Something', 'Hallowed Be Thy Name', 'Eruption', 'Where Eagles Dare', 'Welcome Home (Sanitarium)', 'Sweetest Thing', 'Surrender'],
+    'Rating': [5, 4, 4, 4, 4, 4, 3, 3, 3, 3]
+}
 
-fig = go.Figure([go.Bar(x=songs, y=counts)])
-fig.update_layout(title_text='Song Counts', xaxis_title='Song Name', yaxis_title='Count')
+df = pd.DataFrame(data)
+
+fig = px.bar(df, x='Song', y='Rating')
+fig.update_layout(title_text='Song Ratings')
 print(fig.to_json())

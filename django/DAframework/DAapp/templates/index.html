@@ -212,6 +212,28 @@
         .mt-1 { margin-top: 1rem; }
         .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
         .px-1 { padding-left: 1rem; padding-right: 1rem; }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content select {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
 </style>
 
 
@@ -248,6 +270,11 @@
 
         <form action="{% url 'python' %}" method="post">
             {% csrf_token %}
+            <select name="visualization_type" id="visualizationType">
+                <option value="chart">Chart</option>
+                <option value="graph">Graph</option>
+                <option value="table">Table</option>
+            </select>
             <button id="pythonButton" class="pythonButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Visualise Data</button>
         </form>
 

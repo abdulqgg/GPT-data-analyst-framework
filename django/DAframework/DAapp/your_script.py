@@ -61,7 +61,7 @@ def your_function(txt_file_path, db_file_path, api_key, user_query):
     return response
 
 
-def python_visualise():
+def python_visualise(chart_type):
     df = pd.read_csv('extracted-data.csv')
     data_string = df.to_string()
     chat_completion = openai.ChatCompletion.create(
@@ -71,7 +71,7 @@ def python_visualise():
             {"role": "user", "content":
              f'''Pretend you are a python data analsyis,
 
-                I want you ot give only the python code as a output so for example:
+                I want you to give only the python code as a output so for example:
 
                 Example 1:
                 Input: How to print something
@@ -112,7 +112,7 @@ def python_visualise():
 
                 -----
 
-                Visualise this data using plotly: {data_string}
+                Visualise this data using plotly as a {chart_type}: {data_string}
 
     '''}
         ]

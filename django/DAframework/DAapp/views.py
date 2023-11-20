@@ -31,5 +31,13 @@ def download_view(request):
     return response
 
 def python(request):
-    if request.method== 'POST':
-        return python_visualise()
+    if request.method == 'POST':
+        charts_type = request.POST.get('visualization_type')
+        if charts_type == 'chart':
+            return python_visualise('chart')
+        elif charts_type == 'graph':
+            return python_visualise('graph')
+        elif charts_type == 'table':
+            return python_visualise('table')
+    else:
+        return render(request, 'index.html')
