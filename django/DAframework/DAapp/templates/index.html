@@ -114,70 +114,82 @@
     .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
     .px-1 { padding-left: 1rem; padding-right: 1rem; }
 
-    /* Visualization Section Adjustments for Alignment and Matching Heights */
+    /* Visualization Section Enhancements */
     .visualization-selection {
         display: flex;
-        align-items: center;
-        gap: 10px; /* Space between dropdown and button */
-        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        row-gap: 0.5rem; /* Space between rows */
+        column-gap: 10px; /* Space between dropdown and button */
+        align-items: center; /* Align items vertically */
+        margin-top: 1rem; /* Spacing from previous content */
+        margin-bottom: 1rem; /* Spacing to next content */
     }
 
-    .visualization-selection label {
+    .visualization-selection label,
+    .explain-button label {
         font-weight: 600;
-        margin-bottom: 2rem; /* Align label with inputs vertically */
         color: var(--text-color);
-        text-align: left;
+        margin-bottom: 0.5rem; /* Reduced bottom margin for better alignment */
+        flex-basis: 100%; /* Ensure label takes full width */
     }
 
-    .visualization-selection form {
-        display: flex;
-        flex-grow: 1;
-        gap: 10px;
-    }
-
-    .visualization-selection .visualization-dropdown {
-        flex-grow: 1; /* Allow dropdown to fill available space */
-        padding: 10px 15px;
-        font-size: 0.95rem;
-        border: 1px solid var(--border-color);
+    .visualization-selection .visualization-dropdown,
+    .visualization-selection .pythonButton,
+    .explain-button .explainButton {
+        height: 38px; /* Standardize height for inputs and buttons */
         border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
         background-color: var(--main-content-bg);
         box-shadow: var(--box-shadow);
         cursor: pointer;
-        /*appearance: none; /* Remove native OS dropdown styling */
-        height: 38px; /* Match the button height */
-    }
-
-    .visualization-selection .pythonButton {
-        display: flex;
-        align-items: center; /* This will vertically center the text */
-        justify-content: center; /* This will horizontally center the text */
-        padding: 10px 20px;
-        background-color: var(--primary-color);
-        border: none;
-        border-radius: var(--border-radius);
-        box-shadow: var(--box-shadow);
-        color: white;
-        cursor: pointer;
-        text-transform: uppercase;
-        height: 38px; /* Explicit height to match dropdown */
         transition: background-color 0.2s, box-shadow 0.2s;
     }
 
-    /* Maintain the alignment and size on smaller screens */
+    .visualization-selection .visualization-dropdown {
+        flex-grow: 1; /* Allow dropdown to grow and fill available space */
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+
+    .visualization-selection .pythonButton,
+    .explain-button .explainButton {
+        background-color: var(--primary-color);
+        color: white;
+        text-transform: uppercase;
+        border: none; /* Remove border for the action button */
+        padding: 10px 20px;
+        white-space: nowrap; /* Prevent button text from wrapping */
+    }
+
+    .visualization-selection .pythonButton:hover,
+    .explain-button .explainButton:hover {
+        background-color: var(--secondary-color); /* Interaction state */
+    }
+
+    /* Ensure button text is centered */
+    .visualization-selection .pythonButton,
+    .explain-button .explainButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Responsive Design Adjustments */
     @media screen and (max-width: 768px) {
-        .visualization-selection {
+        .visualization-selection,
+        .explain-button {
             flex-direction: column;
         }
 
         .visualization-selection .visualization-dropdown,
-        .visualization-selection .pythonButton {
-            width: 100%;
-            height: auto; /* Adjust height for mobile to be responsive */
+        .visualization-selection .pythonButton,
+        .explain-button .explainButton {
+            width: 100%; /* Full width on smaller screens */
         }
 
-        .visualization-selection .pythonButton {
-            margin-top: 10px; /* Space between dropdown and button on small screens */
+        .visualization-selection .pythonButton,
+        .explain-button .explainButton {
+            margin-top: 0.5rem; /* Space between dropdown and button */
         }
     }
         
@@ -228,6 +240,12 @@
             </form>
         </div>
         
+        <div class="explain-button">
+            <form action="" method="post">
+                <label for="explainData">Explain data insights: </label>
+                <button id="explainButton" class="explainButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Explain Data</button>
+            </form>
+        </div>
 
     </div>
 </body>
