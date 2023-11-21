@@ -69,14 +69,21 @@ conn.close()
 chat_completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo", 
     messages=[
-        {"role": "system", "content": "You are a sql expert in data analysis"},
+        {"role": "system", "content": "You are a expert in explaining data analysis to non technical audience"},
         {"role": "user", "content": 
-        f'''This 
-            
+        f''' Given this user query:
+
+            {user_query}
+
+            And this output:
+            {rows}
+
+            Explain the output data to me, dont go into much technical details, your tagret audience is non technical. Just explain the output data and context
+
 '''}
         ]
     )
 
-query = chat_completion['choices'][0]['message']['content']
+query_explain = chat_completion['choices'][0]['message']['content']
 
-print(query)
+print(query_explain)

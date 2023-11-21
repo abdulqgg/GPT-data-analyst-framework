@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import FileResponse
 from .forms import DocumentForm
-from .your_script import your_function, python_visualise
+from .your_script import your_function, python_visualise, explain_data
 
 def index(request):
     if request.method == 'POST':
@@ -41,3 +41,8 @@ def python(request):
             return python_visualise('table')
     else:
         return render(request, 'index.html')
+
+def explain(request):
+    if request.method == 'POST':
+        user_query = str(request.POST.get('user_query'))
+        explain_data(user_query)

@@ -135,3 +135,28 @@ def python_visualise(chart_type):
     else:
         # If there was no stdout, return the stderr to help diagnose the issue.
         return HttpResponse(f"Error executing script: {result.stderr}")
+
+def explain_data(user_query):
+    df = pd.read_csv('extracted-data.csv')
+    data_string = df.to_string()
+    chat_completion = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo", 
+    messages=[
+        {"role": "system", "content": "You are a expert in explaining data analysis to non technical audience"},
+        {"role": "user", "content": 
+        f''' Given this user query:
+
+            {user_query}
+
+            And this output:
+            {data_string}
+
+            Explain the output data to me, dont go into much technical details, your tagret audience is non technical. Just explain the output data and context
+
+    '''}
+            ]
+        )
+
+    query_explain = chat_completion['choices'][0]['message']['content']
+
+    return query_explain

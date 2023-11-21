@@ -169,6 +169,7 @@ input[type="submit"]:hover {
         
         <div class="explain-button">
             <form action="" method="post">
+                {% csrf_token %}
                 <label for="explainData">Explain data insights: </label>
                 <button id="explainButton" class="explainButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Explain Data</button>
             </form>
