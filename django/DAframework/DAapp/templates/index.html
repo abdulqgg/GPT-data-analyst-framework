@@ -4,117 +4,123 @@
     <title>GPT DA</title>
     <style> 
         /* General Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
-        }
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
 
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
 
-        /* Header Styles */
-        h1 {
-            text-align: center;
-            color: #333;
-        }
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #333;
+}
 
-        /* Form Styles */
-        form {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+/* Form Styles */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        label {
-            display: block;
-            margin-bottom: 10px;
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #5C6BC0;
+}
 
-        input[type="password"], 
-        input[type="file"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+input[type="password"], 
+input[type="file"],
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
 
-        input[type="submit"] {
-            display: block;
-            width: 100%;
-            background: #5C6BC0;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+input[type="submit"] {
+    display: block;
+    width: calc(100% - 20px);
+    background: #5C6BC0;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: auto;
+}
 
-        input[type="submit"]:hover {
-            background: #3F51B5;
-        }
+input[type="submit"]:hover {
+    background: #3F51B5;
+}
 
-        /* Visualization Selection Styles */
-        .visualization-selection {
-            margin-top: 20px;
-            padding: 20px;
-            background: #E8EAF6;
-            border-radius: 8px;
-        }
+/* Visualization Selection Styles */
+.visualization-selection {
+    margin-top: 20px;
+    padding: 20px;
+    background: #E8EAF6;
+    border-radius: 8px;
+}
 
-        .visualization-dropdown {
-            width: 100%;
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
+.visualization-dropdown {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
 
-        .pythonButton {
-            background: #9FA8DA;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+.pythonButton {
+    background: #9FA8DA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-        .pythonButton:hover {
-            background: #7986CB;
-        }
+.pythonButton:hover {
+    background: #7986CB;
+}
 
-        /* Explain Button Styles */
-        .explain-button {
-            margin-top: 20px;
-            text-align: center;
-        }
+/* Explain Button Styles */
+.explain-button {
+    margin-top: 20px;
+    padding: 20px;
+    background: #E8EAF6;
+    border-radius: 8px;
+    text-align: center;
+}
 
-        .explainButton {
-            background: #81C784;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+.explainButton {
+    background: #9FA8DA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-        .explainButton:hover {
-            background: #66BB6A;
-        }
+.explainButton:hover {
+    background: #7986CB;
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-            }
-        }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}
 
     </style>
 </head>
