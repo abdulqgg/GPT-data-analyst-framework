@@ -114,85 +114,93 @@
     .py-1 { padding-top: 1rem; padding-bottom: 1rem; }
     .px-1 { padding-left: 1rem; padding-right: 1rem; }
 
-    /* Visualization Section Enhancements */
-    .visualization-selection {
+    /* Visualization Selection Styles */
+    .visualization-selection,
+    .explain-button {
         display: flex;
-        flex-wrap: wrap;
-        row-gap: 0.5rem; /* Space between rows */
-        column-gap: 10px; /* Space between dropdown and button */
-        align-items: center; /* Align items vertically */
-        margin-top: 1rem; /* Spacing from previous content */
-        margin-bottom: 1rem; /* Spacing to next content */
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
     }
 
     .visualization-selection label,
     .explain-button label {
+        font-size: 1rem;
         font-weight: 600;
+        margin-bottom: 0.5rem;
         color: var(--text-color);
-        margin-bottom: 0.5rem; /* Reduced bottom margin for better alignment */
-        flex-basis: 100%; /* Ensure label takes full width */
     }
 
-    .visualization-selection .visualization-dropdown,
-    .visualization-selection .pythonButton,
-    .explain-button .explainButton {
-        height: 38px; /* Standardize height for inputs and buttons */
-        border-radius: var(--border-radius);
+    /* Grouped Controls - Form Layout */
+    .grouped-controls {
+        display: flex;
+        width: 100%; /* Ensures the form takes the full width of its parent */
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Dropdown Styles */
+    .visualization-dropdown {
+        flex-grow: 1;
+        padding: 10px;
+        font-size: 1rem;
         border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
         background-color: var(--main-content-bg);
         box-shadow: var(--box-shadow);
-        cursor: pointer;
-        transition: background-color 0.2s, box-shadow 0.2s;
+        height: 40px; /* Matches the button height */
+        appearance: none; /* Removes the default platform-specific styling */
     }
 
-    .visualization-selection .visualization-dropdown {
-        flex-grow: 1; /* Allow dropdown to grow and fill available space */
-        padding: 10px 15px;
-        font-size: 0.95rem;
-    }
-
-    .visualization-selection .pythonButton,
-    .explain-button .explainButton {
-        background-color: var(--primary-color);
-        color: white;
-        text-transform: uppercase;
-        border: none; /* Remove border for the action button */
+    /* Button Styles */
+    .pythonButton,
+    .explainButton {
         padding: 10px 20px;
-        white-space: nowrap; /* Prevent button text from wrapping */
-    }
-
-    .visualization-selection .pythonButton:hover,
-    .explain-button .explainButton:hover {
-        background-color: var(--secondary-color); /* Interaction state */
-    }
-
-    /* Ensure button text is centered */
-    .visualization-selection .pythonButton,
-    .explain-button .explainButton {
-        display: flex;
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: var(--border-radius);
+        color: white;
+        font-size: 1rem;
+        box-shadow: var(--box-shadow);
+        cursor: pointer;
+        text-transform: uppercase;
+        height: 40px; /* Ensures consistent height with dropdown */
+        white-space: nowrap; /* Keeps the button text on one line */
         align-items: center;
         justify-content: center;
+        display: flex;
     }
 
-    /* Responsive Design Adjustments */
+    /* Button Interaction Styles */
+    .pythonButton:hover,
+    .explainButton:hover {
+        background-color: var(--secondary-color);
+    }
+
+    .pythonButton:disabled,
+    .explainButton:disabled {
+        background-color: var(--border-color);
+        cursor: not-allowed;
+    }
+
+    /* Responsive Adjustments */
     @media screen and (max-width: 768px) {
-        .visualization-selection,
-        .explain-button {
+        .grouped-controls {
             flex-direction: column;
+            align-items: stretch; /* Full width on small screens */
         }
 
-        .visualization-selection .visualization-dropdown,
-        .visualization-selection .pythonButton,
-        .explain-button .explainButton {
-            width: 100%; /* Full width on smaller screens */
+        .visualization-dropdown {
+            width: 100%; /* Full width for dropdown on small screens */
+            margin-bottom: 10px; /* Space between dropdown and button */
         }
 
-        .visualization-selection .pythonButton,
-        .explain-button .explainButton {
-            margin-top: 0.5rem; /* Space between dropdown and button */
+        .pythonButton,
+        .explainButton {
+            width: 100%; /* Full width for buttons on small screens */
         }
     }
-        
+
 </style>
 
 
@@ -229,7 +237,7 @@
 
         <div class="visualization-selection">
             <label for="visualizationType">Select Visualisation type:</label>
-            <form action="{% url 'python' %}" method="post">
+            <form action="{% url 'python' %}" method="post" class="grouped-controls">
                 {% csrf_token %}
                 <select name="visualization_type" id="visualizationType" class="visualization-dropdown">
                     <option value="chart">Chart</option>
