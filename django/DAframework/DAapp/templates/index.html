@@ -119,12 +119,12 @@
         display: flex;
         align-items: center;
         gap: 10px; /* Space between dropdown and button */
-        margin-top: 1rem;
+        margin-top: 0.5rem;
     }
 
     .visualization-selection label {
         font-weight: 600;
-        margin-bottom: 0.5rem; /* Align label with inputs vertically */
+        margin-bottom: 2rem; /* Align label with inputs vertically */
         color: var(--text-color);
         text-align: left;
     }
@@ -144,11 +144,14 @@
         background-color: var(--main-content-bg);
         box-shadow: var(--box-shadow);
         cursor: pointer;
-        appearance: none; /* Remove native OS dropdown styling */
+        /*appearance: none; /* Remove native OS dropdown styling */
         height: 38px; /* Match the button height */
     }
 
     .visualization-selection .pythonButton {
+        display: flex;
+        align-items: center; /* This will vertically center the text */
+        justify-content: center; /* This will horizontally center the text */
         padding: 10px 20px;
         background-color: var(--primary-color);
         border: none;
@@ -157,8 +160,8 @@
         color: white;
         cursor: pointer;
         text-transform: uppercase;
-        transition: background-color 0.2s, box-shadow 0.2s;
         height: 38px; /* Explicit height to match dropdown */
+        transition: background-color 0.2s, box-shadow 0.2s;
     }
 
     /* Maintain the alignment and size on smaller screens */
