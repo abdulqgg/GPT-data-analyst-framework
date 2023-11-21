@@ -1,15 +1,19 @@
 import json
-import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go
 
-# create a dataframe from the given data
-data = {
-    'Song': ['The Trooper', 'Untitled', 'The Number Of The Beast', 'Sure Know Something', 'Hallowed Be Thy Name', 'Eruption', 'Where Eagles Dare', 'Welcome Home (Sanitarium)', 'Sweetest Thing', 'Surrender'],
-    'Rating': [5, 4, 4, 4, 4, 4, 3, 3, 3, 3]
-}
+# Define the data
+songs = ['The Trooper', 'Untitled', 'The Number Of The Beast', 'Sure Know Something',
+         'Hallowed Be Thy Name', 'Eruption', 'Where Eagles Dare', 'Welcome Home (Sanitarium)',
+         'Sweetest Thing', 'Surrender']
+ratings = [5, 4, 4, 4, 4, 4, 3, 3, 3, 3]
 
-df = pd.DataFrame(data)
+# Create the bar chart
+fig = go.Figure(data=go.Bar(x=songs, y=ratings))
 
-# create a bar chart using plotly
-fig = px.bar(df, x='Song', y='Rating', title='Song Ratings')
+# Set the layout
+fig.update_layout(title='Songs Ratings',
+                  xaxis_title='Songs',
+                  yaxis_title='Ratings')
+
+# Show the chart
 print(fig.to_json())
