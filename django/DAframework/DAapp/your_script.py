@@ -9,6 +9,9 @@ import json
 import plotly.graph_objects as go
 import plotly.offline as pyo
 from django.http import HttpResponse
+import logging
+
+logger = logging.getLogger(__name__)
 
 def your_function(txt_file_path, db_file_path, api_key, user_query):
     with open(txt_file_path, 'r') as file:
@@ -158,5 +161,6 @@ def explain_data(user_query):
         )
 
     query_explain = chat_completion['choices'][0]['message']['content']
+    logger.debug(f'Generated explaination: {query_explain}')
 
     return query_explain

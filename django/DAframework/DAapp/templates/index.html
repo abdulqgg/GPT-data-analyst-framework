@@ -168,11 +168,18 @@ input[type="submit"]:hover {
         </div>
         
         <div class="explain-button">
-            <form action="" method="post">
+            <form action="{% url 'explain' %}" method="post">
                 {% csrf_token %}
                 <label for="explainData">Explain data insights: </label>
                 <button id="explainButton" class="explainButton" type="submit" {% if not form_submitted %}disabled{% endif %}>Explain Data</button>
             </form>
+        </div>
+
+        <div class="explaination">
+            {% if explaination %}
+                <h3>Explaination:</h3>
+                <p>{{ explaination}}</p>
+            {% endif %}
         </div>
 
     </div>

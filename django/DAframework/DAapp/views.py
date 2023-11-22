@@ -43,6 +43,10 @@ def python(request):
         return render(request, 'index.html')
 
 def explain(request):
+    explaination = None
+
     if request.method == 'POST':
         user_query = str(request.POST.get('user_query'))
-        explain_data(user_query)
+        explaination = explain_data(user_query)
+
+    return render(request, 'index.html', {'explaination': explaination})
