@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-import openai
+from openai import OpenAI
 import subprocess
 import pandas as pd
 
@@ -10,20 +10,23 @@ data_string = df.to_string()
 
 load_dotenv()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(
+    api_key=os.environ['OPENAI_API_KEY'],
+)
 
-chat_completion = openai.ChatCompletion.create(
+chat_completion = client.chat.completions.create(
     model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": "You are a python expert in data analysis"},
         {"role": "user", "content": 
         f'''Pretend you are a python data analsyis,
 
-            I want you ot give only the python code as a output so for example:
+            I want you to give only the python code with all libaries imported as a output with no speech marks so for example:
 
             Example 1:
             Input: How to print something
-            Output: print("hello world")
+            Output: 
+            print("hello world")
 
             Example 2:
             Input: How to create a bar chart
@@ -60,15 +63,18 @@ chat_completion = openai.ChatCompletion.create(
 
             -----
 
-            Visualise this data using plotly as a most appropriate visualization: {data_string}
+            Visualise this data using plotly as a most appropriate visualization: {data_string}'''}])
 
-'''}
-        ]
-    )
 
-execute = chat_completion['choices'][0]['message']['content']
+execute = chat_completion.choices[0].message.content
+
+if execute[:1] == '`':
+    execute = execute[3:-3]
+
+print(execute)
 
 with open('python-execute.txt', 'w') as f:
     f.write(execute)
 
 subprocess.run(["python", 'python-execute.txt'])
+

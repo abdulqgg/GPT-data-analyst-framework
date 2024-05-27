@@ -1,8 +1,9 @@
-import plotly.graph_objects as go
+import plotly.express as px
 
-names = ['Helena Holý', 'Richard Cunningham', 'Luis Rojas', 'Ladislav Kovács', 'Hugh O\'Reilly', 'Julia Barnett', 'Frank Ralston', 'Fynn Zimmermann', 'Astrid Gruber', 'Victor Stevens']
-scores = [49.62, 47.62, 46.62, 45.62, 45.62, 43.62, 43.62, 43.62, 42.62, 42.62]
+data = {
+    'Album': ['Minha Historia', 'Greatest Hits', 'Unplugged', 'Acústico', 'Greatest Kiss'],
+    'Rating': [27, 26, 25, 22, 20]
+}
 
-fig = go.Figure(data=[go.Bar(x=names, y=scores)])
-fig.update_layout(title_text='Scores by Name', xaxis_title='Name', yaxis_title='Score')
+fig = px.bar(data, x='Album', y='Rating', title='Album Ratings')
 fig.show()

@@ -40,11 +40,7 @@ chat_completion = openai.ChatCompletion.create(
             -----
 
 
-            {user_query}
-            
-'''}
-        ]
-    )
+            {user_query}'''}])
 
 query = chat_completion['choices'][0]['message']['content']
 
@@ -78,11 +74,7 @@ chat_completion = openai.ChatCompletion.create(
             And this output:
             {rows}
 
-            Explain the output data to me, dont go into much technical details, your tagret audience is non technical. Just explain the output data and context
-
-'''}
-        ]
-    )
+            Explain the output data to me, dont go into much technical details, your tagret audience is non technical. Just explain the output data and context'''}])
 
 query_explain = chat_completion['choices'][0]['message']['content']
 
