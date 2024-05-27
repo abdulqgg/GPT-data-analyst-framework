@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-import openai
+from openai import OpenAI
 import subprocess
 import sqlite3
 import csv
@@ -10,12 +10,15 @@ load_dotenv()
 with open('database-info.txt', 'r') as file:
     database_info = file.read()
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(
+    api_key=os.environ['OPENAI_API_KEY'],
+)
+
 
 # e.g Give me a list of all customer names with the count of unique invoices and the sum of unit price where the sum of unit price is greater than 45. Order by customer name
 user_query = input("Please enter your query: ")
 
-chat_completion = openai.ChatCompletion.create(
+chat_completion = client.chat.completions.create(
     model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": "You are a sql expert in data analysis"},
@@ -42,7 +45,13 @@ chat_completion = openai.ChatCompletion.create(
 
             {user_query}'''}])
 
-query = chat_completion['choices'][0]['message']['content']
+query = chat_completion.choices[0].message.content
+
+if query[:1] == '`':
+    query = query[3:-3]
+
+if query.startswith("sql"):
+    query = query[4:]
 
 print(query)
 
@@ -62,7 +71,7 @@ with open('extracted-data.csv', 'w', newline='') as f:
 conn.close()
 
 
-chat_completion = openai.ChatCompletion.create(
+chat_completion = client.chat.completions.create(
     model="gpt-3.5-turbo", 
     messages=[
         {"role": "system", "content": "You are a expert in explaining data analysis to non technical audience"},
@@ -76,6 +85,6 @@ chat_completion = openai.ChatCompletion.create(
 
             Explain the output data to me, dont go into much technical details, your tagret audience is non technical. Just explain the output data and context'''}])
 
-query_explain = chat_completion['choices'][0]['message']['content']
+query_explain = chat_completion.choices[0].message.content
 
 print(query_explain)
